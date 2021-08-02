@@ -1,7 +1,12 @@
-t = 7
-X = 5
+import tkinter as tk
+def flash():
+    root.after(200, lambda: label.configure(background="white"))
+    root.after(400, lambda: label.configure(background="yellow"))
 
-if t-X == 2:
-    print("Go")
-else:
-    print(False)
+root = tk.Tk()
+label = tk.Label(root, text="Hello", background="yellow")
+button = tk.Button(root, text="Flash!", command=flash)
+label.pack(side="top", fill="x")
+button.pack(side="bottom", padx=20, pady=20)
+
+root.mainloop()
