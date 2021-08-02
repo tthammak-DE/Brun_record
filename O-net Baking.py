@@ -1,7 +1,4 @@
-'''
-May 2017
-@author: Burkhard A. Meier
-'''
+
 #======================
 # imports
 #======================
@@ -33,8 +30,8 @@ tabControl.pack(expand=1, fill="both")  # Pack to make visible
 
 
 image = Tkinter.PhotoImage(file="O-net.png")
-label_wifi = Tkinter.Label(image=image)
-label_wifi.pack(side=LEFT,fill=X)
+label_image = Tkinter.Label(image=image)
+label_image.pack(side=LEFT,fill=X)
 
 # LabelFrame using tab1 as the parent
 # CellA = ttk.LabelFrame(tab1, text=' Cell 1')
@@ -47,24 +44,45 @@ label_wifi.pack(side=LEFT,fill=X)
 
 Date_stamp = datetime.now().strftime('%H:%M:%S')
 
-hour = time.strftime("%H")
-minute =time.strftime("%M")
-second = time.strftime("%S")
 
 def clock():    #Clock
+    my_clock = ''
     hour = time.strftime("%H")
     minute =time.strftime("%M")
     second = time.strftime("%S")
-    my_label.config(text= hour + ":" + minute + ":" + second)
-    my_label.after(1000,clock)
+    my_clock.config(text= hour + ":" + minute + ":" + second)
+    my_clock.after(1000,clock)
 
-my_label = Label(win, text="")
-my_label.place(x=1200,y=20)
+common_time = ''
+clock = Label(win, font=('times', 15))
+clock.pack(fill=BOTH, expand=1)
+
+def tick():
+    global common_time
+    # get the current local time from the PC
+    time2 = time.strftime('%H:%M:%S')
+    # if time string has changed, update it
+    if time2 != common_time:
+        common_time = time2
+        clock.config(text=time2)
+        # calls itself every 200 milliseconds
+        # to update the time display as needed
+        # could use >200 ms, but display gets jerky
+    clock.after(1000, tick)
+    print(common_time)
+    return common_time
+
+def compare_time(x):
+    global common_time
+    if common_time < x:
+        print ("Good job")
+    
+
 
 
 #!-------- Cell 2
 Cell_2 = ttk.LabelFrame(tab1, text=' Cell_2')
-Cell_2.grid(column=0, row=1, padx=8, pady=4)      
+Cell_2.grid(column=0, row=1, padx=8, pady=4)     
 
 name = tk.StringVar()
 name_entered = ttk.Entry(Cell_2, width=12, textvariable=name)
@@ -80,18 +98,64 @@ Cell_2_label=Label(Cell_2,text="Baking slot D",fg='white',bg='DeepSkyBlue4',font
 Cell_2_label.grid(column=0, row=8, padx=8, pady=4)
 
 
-
+cycle_time = 6
+remain_time = 0
+running = False
 def start_cell1_a():
-    Cell_2_label=Label(Cell_2,text= Date_stamp,fg='black',bg='white',font=("arial", 10))
+    Cell_2_label=Label(Cell_2,text= common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=5, padx=8, pady=4)
+    def count_a():
+            global running
+            running = True
+            if running:
+                global cycle_time
+                print(cycle_time)
+                SS = Cell_2_countlb_a.after(10000,count_a)
+                cycle_time += 1
+                remain_time = cycle_time
+            Cell_2_countlb_a.config(text=str(cycle_time)) 
+            print("This is remain_time:",remain_time)
+            LED_show_a()
+            return cycle_time
+            
+        
+    def LED_show_a():
+        if cycle_time <5 :
+            cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
+            cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
+            cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
+            cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
+            # cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold')) 
+            # cell_2_butt.grid(column=10, row=5, padx=0, pady=2)
+            cell_2_butt.after(1000,LED_show_a)                 
+        elif cycle_time == 0 :
+            cell_2_butt=Button(Cell_2, text=" ", width =12,font = ('tahoma 7 bold'))
+            cell_2_butt.grid(column=8, row=5, padx=0, pady=2)
+            cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold')) 
+            cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
+            cell_2_butt=Button(Cell_2, text=" ", width =12,fg='red',font = ('tahoma 7 bold')) 
+            cell_2_butt.grid(column=10, row=5, padx=0, pady=2)
+            cell_2_butt.after(500,LED_show_a)  
+            
+        else :
+            cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
+            cell_2_butt.grid(column=10, row=5, padx=0, pady=2)
+        
+
+    
+    count_a()
+
+  
+    
+
 def start_cell1_b():
-    Cell_2_label=Label(Cell_2,text=Date_stamp,fg='black',bg='white',font=("arial", 10))
+    Cell_2_label=Label(Cell_2,text=common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=6, padx=8, pady=4)
 def start_cell1_c():
-    Cell_2_label=Label(Cell_2,text=Date_stamp,fg='black',bg='white',font=("arial", 10))
+    Cell_2_label=Label(Cell_2,text=common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=7, padx=8, pady=4)
 def start_cell1_d():
-    Cell_2_label=Label(Cell_2,text=Date_stamp,fg='black',bg='white',font=("arial", 10))
+    Cell_2_label=Label(Cell_2,text=common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=8, padx=8, pady=4)
         
 #!----------Cell Mess box
@@ -103,7 +167,11 @@ def mes_boxA():
    if mes_boxA == True:
        start_cell1_a()
    else :
-        print()
+        print("--")
+
+# def mainfunction():
+
+    
 
 
 
@@ -142,22 +210,17 @@ Cell_2_label.grid(column=4, row=7, padx=8, pady=4)
 Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
 Cell_2_label.grid(column=4, row=8, padx=8, pady=4)
 
-Cell_2_label=Label(Cell_2,text="    GG   ",fg='white',bg='white',font=("arial", 10))
-Cell_2_label.grid(column=5, row=5, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="    GG   ",fg='white',bg='white',font=("arial", 10))
-Cell_2_label.grid(column=5, row=6, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="  ,  GG   ",fg='white',bg='white',font=("arial", 10))
-Cell_2_label.grid(column=5, row=7, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="    GG   ",fg='white',bg='white',font=("arial", 10))
-Cell_2_label.grid(column=5, row=8, padx=8, pady=4)
+Cell_2_countlb_a=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
+Cell_2_countlb_a.grid(column=5, row=5, padx=8, pady=4)
+Cell_2_countlb_b=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
+Cell_2_countlb_b.grid(column=5, row=6, padx=8, pady=4)
+Cell_2_countlb_c=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
+Cell_2_countlb_c.grid(column=5, row=7, padx=8, pady=4)
+Cell_2_countlb_d=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
+Cell_2_countlb_d.grid(column=5, row=8, padx=8, pady=4)
 
 
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=8, row=5, padx=0, pady=2)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=10, row=5, padx=0, pady=2)
+
 
 
 cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
@@ -386,7 +449,7 @@ help_menu.add_command(label="About")
 menu_bar.add_cascade(label="Help", menu=help_menu)
 
 
-
+tick()
 name_entered.focus()      # Place cursor into name Entry
 #======================
 # Start GUI
