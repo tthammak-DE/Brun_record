@@ -42,16 +42,7 @@ label_image.pack(side=LEFT,fill=X)
 # a_label.grid(column=0, row=0, sticky='W')
 
 
-Date_stamp = datetime.now().strftime('%H:%M:%S')
-
-
-def clock():    #Clock
-    my_clock = ''
-    hour = time.strftime("%H")
-    minute =time.strftime("%M")
-    second = time.strftime("%S")
-    my_clock.config(text= hour + ":" + minute + ":" + second)
-    my_clock.after(1000,clock)
+Date_stamp = datetime.now().strftime('%H:%M %p')
 
 common_time = ''
 clock = Label(win, font=('times', 15))
@@ -60,7 +51,7 @@ clock.pack(fill=BOTH, expand=1)
 def tick():
     global common_time
     # get the current local time from the PC
-    time2 = time.strftime('%H:%M:%S')
+    time2 = time.strftime('%H:%M %p')
     # if time string has changed, update it
     if time2 != common_time:
         common_time = time2
@@ -77,7 +68,7 @@ def compare_time(x):
     if common_time < x:
         print ("Good job")
     
-
+countlim_set = 30
 
 
 #!-------- Cell 2
@@ -98,7 +89,7 @@ Cell_2_label=Label(Cell_2,text="Baking slot D",fg='white',bg='DeepSkyBlue4',font
 Cell_2_label.grid(column=0, row=8, padx=8, pady=4)
 
 
-cycle_time = 0
+cycle_timea = 0
 remain_time = 0
 running = False
 def start_cell1_a():
@@ -108,17 +99,17 @@ def start_cell1_a():
             global running
             running = True
             if running:
-                global cycle_time
-                print(cycle_time)
+                global cycle_timea
+                print(cycle_timea)
                 Cell_2_countlb_a.after(1000,count_a)
-                cycle_time += 1
-                remain_time = cycle_time
-            Cell_2_countlb_a.config(text=str(cycle_time)) 
-            print("This is remain_time:",remain_time)
+                cycle_timea += 1
+                remain_time = cycle_timea
+            Cell_2_countlb_a.config(text=str(cycle_timea)) 
+            print("This is remain_time A:",remain_time)
             LED_show_a()
-            if cycle_time >= 5 :
+            if cycle_timea >= countlim_set :
                     red()
-            return cycle_time
+            return cycle_timea
             
     def LED_show_a():
             cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
@@ -130,11 +121,12 @@ def start_cell1_a():
     def red():
         cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
         cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
-        cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg="lawn green",fg='white',font = ('tahoma 7 bold')) 
         cell_2_butt.grid(column=9, row=5, padx=0, pady=2)
         Cell_2.after(100, lambda: cell_2_butt.configure(background="white"))
-        Cell_2.after(200, lambda: cell_2_butt.configure(background="red"))       
+        Cell_2.after(200, lambda: cell_2_butt.configure(background="lawn green"))       
     count_a()
+
 cycle_timeb = 0
 
 def start_cell1_b():
@@ -150,9 +142,9 @@ def start_cell1_b():
                     cycle_timeb += 1
                     remain_time = cycle_timeb
                 Cell_2_countlb_b.config(text=str(cycle_timeb)) 
-                print("This is remain_time:",remain_time)
+                print("This is remain_time B:",remain_time)
                 LED_show_b()
-                if cycle_timeb >= 5 :
+                if cycle_timec >= countlim_set :
                     red()
                 return cycle_timeb
       
@@ -166,30 +158,117 @@ def start_cell1_b():
     def red():
         cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
         cell_2_butt.grid(column=9, row=6, padx=0, pady=2)
-        cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
         cell_2_butt.grid(column=9, row=6, padx=0, pady=2)
         Cell_2.after(200, lambda: cell_2_butt.configure(background="white"))
-        Cell_2.after(400, lambda: cell_2_butt.configure(background="red"))    
+        Cell_2.after(400, lambda: cell_2_butt.configure(background='lawn green'))    
     count_a()
     
 
-
+cycle_timec = 0
 def start_cell1_c():
     Cell_2_label=Label(Cell_2,text=common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=7, padx=8, pady=4)
+    def count_a():
+                global cycle_timec
+                global running
+                running = True
+                if running:
+                    print(cycle_timec)
+                    Cell_2_countlb_c.after(1000,count_a)
+                    cycle_timec += 1
+                    remain_time = cycle_timec
+                Cell_2_countlb_c.config(text=str(cycle_timec)) 
+                print("This is remain_time C:",remain_time)
+                LED_show_c()
+                if cycle_timec >= countlim_set :
+                    red()
+                return cycle_timec
+      
+    def LED_show_c():
+        cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
+        cell_2_butt.grid(column=9, row=7, padx=0, pady=2)
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt.grid(column=9, row=7, padx=0, pady=2)
+        Cell_2.after(200, lambda: cell_2_butt.configure(background="white"))
+        Cell_2.after(400, lambda: cell_2_butt.configure(background="yellow"))
+    def red():
+        cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
+        cell_2_butt.grid(column=9, row=7, padx=0, pady=2)
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt.grid(column=9, row=7, padx=0, pady=2)
+        Cell_2.after(200, lambda: cell_2_butt.configure(background="white"))
+        Cell_2.after(400, lambda: cell_2_butt.configure(background='lawn green'))    
+    count_a()
+
+cycle_timed = 0
 def start_cell1_d():
     Cell_2_label=Label(Cell_2,text=common_time,fg='black',bg='white',font=("arial", 10))
     Cell_2_label.grid(column=3, row=8, padx=8, pady=4)
+    def count_a():
+                global cycle_timed
+                global running
+                running = True
+                if running:
+                    print(cycle_timed)
+                    Cell_2_countlb_d.after(1000,count_a)
+                    cycle_timed += 1
+                    remain_time = cycle_timed
+                Cell_2_countlb_d.config(text=str(cycle_timed)) 
+                print("This is remain_time D:",remain_time)
+                LED_show_c()
+                if cycle_timed >= countlim_set  :
+                    red()
+                return cycle_timed
+      
+    def LED_show_c():
+        cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
+        cell_2_butt.grid(column=9, row=8, padx=0, pady=2)
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt.grid(column=9, row=8, padx=0, pady=2)
+        Cell_2.after(200, lambda: cell_2_butt.configure(background="white"))
+        Cell_2.after(400, lambda: cell_2_butt.configure(background="yellow"))
+    def red():
+        cell_2_butt=Button(Cell_2, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
+        cell_2_butt.grid(column=9, row=8, padx=0, pady=2)
+        cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
+        cell_2_butt.grid(column=9, row=8, padx=0, pady=2)
+        Cell_2.after(200, lambda: cell_2_butt.configure(background="white"))
+        Cell_2.after(400, lambda: cell_2_butt.configure(background='lawn green'))    
+    count_a()
+    
         
 #!----------Cell Mess box
 
 
-def mes_boxA():
-   mes_boxA = messagebox.askokcancel('OK','Please make sure')
-   print(mes_boxA)
-   if mes_boxA == True:
-       start_cell1_a()
-   else :
+def mes_box_A():
+    mes_a = messagebox.askokcancel('OK','Please make sure a')
+    print(mes_a)
+    if mes_a == True:
+        start_cell1_a()
+def mes_box_B():
+    mes_b = messagebox.askokcancel('OK','Please make sure b')
+    print(mes_b)
+    if mes_b == True:
+        start_cell1_b()
+def mes_box_C():
+    mes_c = messagebox.askokcancel('OK','Please make sure c')
+    print(mes_c)
+    if mes_c == True:
+        start_cell1_c()
+def mes_box_D():
+    mes_d = messagebox.askokcancel('OK','Please make sure d')
+    print("mes_d",mes_d)
+    if mes_d == True:
+        start_cell1_d()
+   
+    # if mes_b == True:
+    #     start_cell1_b()
+    # if  mes_c == True:
+    #     start_cell1_c()
+    # if mes_d == True:
+    #     start_cell1_d()
+    # else :
         print("--")
 
 # def mainfunction():
@@ -198,55 +277,64 @@ def mes_boxA():
 
 
 
-cell2_start_acA = ttk.Button(Cell_2,width=12, text="Start A",command= mes_boxA)   
+cell2_start_acA = ttk.Button(Cell_2,width=12, text="Start A",command= mes_box_A)   
 cell2_start_acA.grid(column=1, row=5)
-cell2_start_acb = ttk.Button(Cell_2,width=12, text="Start B",command= start_cell1_b)   
+cell2_start_acb = ttk.Button(Cell_2,width=12, text="Start B",command= mes_box_B)   
 cell2_start_acb.grid(column=1, row=6) 
-cell2_start_acc = ttk.Button(Cell_2,width=12, text="Start C",command= start_cell1_c)   
+cell2_start_acc = ttk.Button(Cell_2,width=12, text="Start C",command= mes_box_C)   
 cell2_start_acc.grid(column=1, row=7) 
-cell2_start_acd = ttk.Button(Cell_2,width=12, text="Start D",command= start_cell1_d)   
+cell2_start_acd = ttk.Button(Cell_2,width=12, text="Start D",command= mes_box_D)   
 cell2_start_acd.grid(column=1, row=8) 
 
 
 
 
 
-
-
 Cell_2_label=Label(Cell_2,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=5, padx=8, pady=4)
+Cell_2_label.grid(column=2, row=5, padx=8, pady=4)
 Cell_2_label=Label(Cell_2,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=6, padx=8, pady=4)
+Cell_2_label.grid(column=2, row=6, padx=8, pady=4)
 Cell_2_label=Label(Cell_2,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=7, padx=8, pady=4)
+Cell_2_label.grid(column=2, row=7, padx=8, pady=4)
 Cell_2_label=Label(Cell_2,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=8, padx=8, pady=4)
+Cell_2_label.grid(column=2, row=8, padx=8, pady=4)
+
+
+# Cell_2_label=Label(Cell_2,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
+# Cell_2_label.grid(column=4, row=5, padx=8, pady=4)
+# Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
+# Cell_2_label.grid(column=4, row=6, padx=8, pady=4)
+# Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
+# Cell_2_label.grid(column=4, row=7, padx=8, pady=4)
+# Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
+# Cell_2_label.grid(column=4, row=8, padx=8, pady=4)
 
 
 
-Cell_2_label=Label(Cell_2,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=5, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=6, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=7, padx=8, pady=4)
-Cell_2_label=Label(Cell_2,text="Stop time  :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-Cell_2_label.grid(column=4, row=8, padx=8, pady=4)
+cell2_stop_A = ttk.Button(Cell_2,width=12, text="Stop A")   
+cell2_stop_A.grid(column=5, row=5,padx=2, pady=2)
+cell2_stop_B = ttk.Button(Cell_2,width=12, text="Stop B")   
+cell2_stop_B.grid(column=5, row=6,padx=2, pady=2) 
+cell2_stop_C = ttk.Button(Cell_2,width=12, text="Stop C")   
+cell2_stop_C.grid(column=5, row=7,padx=2, pady=2) 
+cell2_stop_D = ttk.Button(Cell_2,width=12, text="Stop D")   
+cell2_stop_D.grid(column=5, row=8,padx=2, pady=2) 
+
 
 Cell_2_countlb_a=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
-Cell_2_countlb_a.grid(column=5, row=5, padx=8, pady=4)
+Cell_2_countlb_a.grid(column=4, row=5, padx=8, pady=4)
 Cell_2_countlb_b=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
-Cell_2_countlb_b.grid(column=5, row=6, padx=8, pady=4)
+Cell_2_countlb_b.grid(column=4, row=6, padx=8, pady=4)
 Cell_2_countlb_c=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
-Cell_2_countlb_c.grid(column=5, row=7, padx=8, pady=4)
+Cell_2_countlb_c.grid(column=4, row=7, padx=8, pady=4)
 Cell_2_countlb_d=Label(Cell_2,text=" ",fg='black',bg='white',font=("arial", 10))
-Cell_2_countlb_d.grid(column=5, row=8, padx=8, pady=4)
+Cell_2_countlb_d.grid(column=4, row=8, padx=8, pady=4)
 
 
 
 
 
-# cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
 # cell_2_butt.grid(column=8, row=6, padx=0, pady=4)
 # cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
 # cell_2_butt.grid(column=9, row=6, padx=0, pady=4)
@@ -255,21 +343,21 @@ Cell_2_countlb_d.grid(column=5, row=8, padx=8, pady=4)
 
 
 
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=8, row=7, padx=0, pady=4)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=9, row=7, padx=0, pady=4)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=10, row=7, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=8, row=7, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=9, row=7, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=10, row=7, padx=0, pady=4)
 
 
 
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=8, row=8, padx=0, pady=4)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=9, row=8, padx=0, pady=4)
-cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
-cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=8, row=8, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=9, row=8, padx=0, pady=4)
+# cell_2_butt=Button(Cell_2, text=" ", width =12,bg="green",fg='white',font = ('tahoma 7 bold')) 
+# cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
 
 
 
@@ -315,7 +403,7 @@ cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
 # Cell_3_label=Label(Cell_3,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
 # Cell_3_label.grid(column=1, row=8, padx=8, pady=4)
 
-# cell_3_butt=Button(Cell_3, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+# cell_3_butt=Button(Cell_3, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=8, row=5, padx=0, pady=2)
 # cell_3_butt=Button(Cell_3, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=9, row=5, padx=0, pady=2)
@@ -323,7 +411,7 @@ cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
 # cell_3_butt.grid(column=10, row=5, padx=0, pady=2)
 
 
-# cell_3_butt=Button(Cell_3, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+# cell_3_butt=Button(Cell_3, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=8, row=6, padx=0, pady=4)
 # cell_3_butt=Button(Cell_3, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=9, row=6, padx=0, pady=4)
@@ -332,7 +420,7 @@ cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
 
 
 
-# cell_3_butt=Button(Cell_3, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+# cell_3_butt=Button(Cell_3, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=8, row=7, padx=0, pady=4)
 # cell_3_butt=Button(Cell_3, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=9, row=7, padx=0, pady=4)
@@ -341,7 +429,7 @@ cell_2_butt.grid(column=10, row=8, padx=0, pady=4)
 
 
 
-# cell_3_butt=Button(Cell_3, text=" ", width =12,bg="red",fg='white',font = ('tahoma 7 bold')) 
+# cell_3_butt=Button(Cell_3, text=" ", width =12,bg='lawn green',fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=8, row=8, padx=0, pady=4)
 # cell_3_butt=Button(Cell_3, text=" ", width =12,bg="Yellow",fg='white',font = ('tahoma 7 bold')) 
 # cell_3_butt.grid(column=9, row=8, padx=0, pady=4)
