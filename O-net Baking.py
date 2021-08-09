@@ -185,7 +185,7 @@ def cell_1_main_start():
             start_cell1_a(cell1_slot_a_running)
             # cell_1_butt=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 7 bold'))
             # cell_1_butt.grid(column=9, row=5, padx=0, pady=2)
-            
+             
             return cell1_cycle_time_a
 
     def cell1_b_stop(stop_butt):
@@ -219,7 +219,7 @@ def cell_1_main_start():
 
     def mes_box_A():
         global cell1_slot_a_running
-        mes_a = messagebox.askokcancel('OK','Please make sure a')
+        mes_a = messagebox.askokcancel('Re-check','Sure to start slot A')
         #print(mes_a)
         if mes_a == True:
             cell1_slot_a_running = True
@@ -229,7 +229,7 @@ def cell_1_main_start():
     
     def mes_box_B():
         global cell1_slot_b_running
-        mes_b = messagebox.askokcancel('OK','Please make sure b')
+        mes_b = messagebox.askokcancel('Re-check','Sure to start slot B')
         #print(mes_b)
         if mes_b == True:
             cell1_slot_b_running = True
@@ -239,7 +239,7 @@ def cell_1_main_start():
 
     def mes_box_C():
         global cell1_slot_c_running
-        mes_c = messagebox.askokcancel('OK','Please make sure b')
+        mes_c = messagebox.askokcancel('Re-check','Sure to start slot C')
         #print(mes_c)
         if mes_c == True:
             cell1_slot_c_running = True
@@ -249,7 +249,7 @@ def cell_1_main_start():
         
     def mes_box_D():
         global cell1_slot_d_running
-        mes_d = messagebox.askokcancel('OK','Please make sure b')
+        mes_d = messagebox.askokcancel('Re-check','Sure to start slot D')
         #print(mes_d)
         if mes_d == True:
             cell1_slot_d_running = True
@@ -599,7 +599,7 @@ def cell_2_main_start():
 
     def mes_box_A():
         global cell2_slot_a_running
-        mes_a = messagebox.askokcancel('OK','Please make sure a')
+        mes_a = messagebox.askokcancel('Re-check','Sure to start slot A')
         ##print(mes_a)
         if mes_a == True:
             cell2_slot_a_running = True
@@ -609,7 +609,7 @@ def cell_2_main_start():
     
     def mes_box_B():
         global cell2_slot_b_running
-        mes_b = messagebox.askokcancel('OK','Please make sure b')
+        mes_b = messagebox.askokcancel('Re-check','Sure to start slot B')
         ##print(mes_b)
         if mes_b == True:
             cell2_slot_b_running = True
@@ -619,7 +619,7 @@ def cell_2_main_start():
 
     def mes_box_C():
         global cell2_slot_c_running
-        mes_c = messagebox.askokcancel('OK','Please make sure b')
+        mes_c = messagebox.askokcancel('Re-check','Sure to start slot C')
         ##print(mes_c)
         if mes_c == True:
             cell2_slot_c_running = True
@@ -629,7 +629,7 @@ def cell_2_main_start():
         
     def mes_box_D():
         global cell2_slot_d_running
-        mes_d = messagebox.askokcancel('OK','Please make sure b')
+        mes_d = messagebox.askokcancel('Re-check','Sure to start slot D')
         ##print(mes_d)
         if mes_d == True:
             cell2_slot_d_running = True
@@ -1005,7 +1005,7 @@ def cell_3_main_start():
 
     def mes_box_A():
         global cell3_slot_a_running
-        mes_a = messagebox.askokcancel('OK','Please make sure a')
+        mes_a = messagebox.askokcancel('Re-check','Sure to start slot A')
         ##print(mes_a)
         if mes_a == True:
             cell3_slot_a_running = True
@@ -1015,7 +1015,7 @@ def cell_3_main_start():
     
     def mes_box_B():
         global cell3_slot_b_running
-        mes_b = messagebox.askokcancel('OK','Please make sure b')
+        mes_b = messagebox.askokcancel('Re-check','Sure to start slot B')
         ##print(mes_b)
         if mes_b == True:
             cell3_slot_b_running = True
@@ -1025,7 +1025,7 @@ def cell_3_main_start():
 
     def mes_box_C():
         global cell3_slot_c_running
-        mes_c = messagebox.askokcancel('OK','Please make sure b')
+        mes_c = messagebox.askokcancel('Re-check','Sure to start slot C')
         ##print(mes_c)
         if mes_c == True:
             cell3_slot_c_running = True
@@ -1035,7 +1035,7 @@ def cell_3_main_start():
         
     def mes_box_D():
         global cell3_slot_d_running
-        mes_d = messagebox.askokcancel('OK','Please make sure b')
+        mes_d = messagebox.askokcancel('Re-check','Sure to start slot D')
         ##print(mes_d)
         if mes_d == True:
             cell3_slot_d_running = True
@@ -1384,7 +1384,7 @@ def cell_4_main_start():
 
     def mes_box_A():
         global cell4_slot_a_running
-        mes_a = messagebox.askokcancel('OK','Please make sure a')
+        mes_a = messagebox.askokcancel('Re-check','Sure to start slot A')
         ##print(mes_a)
         if mes_a == True:
             cell4_slot_a_running = True
@@ -1394,7 +1394,7 @@ def cell_4_main_start():
     
     def mes_box_B():
         global cell4_slot_b_running
-        mes_b = messagebox.askokcancel('OK','Please make sure b')
+        mes_b = messagebox.askokcancel('Re-check','Sure to start slot B')
         ##print(mes_b)
         if mes_b == True:
             cell4_slot_b_running = True
@@ -1404,7 +1404,7 @@ def cell_4_main_start():
 
     def mes_box_C():
         global cell4_slot_c_running
-        mes_c = messagebox.askokcancel('OK','Please make sure b')
+        mes_c = messagebox.askokcancel('Re-check','Sure to start slot C')
         ##print(mes_c)
         if mes_c == True:
             cell4_slot_c_running = True
@@ -1414,7 +1414,7 @@ def cell_4_main_start():
         
     def mes_box_D():
         global cell4_slot_d_running
-        mes_d = messagebox.askokcancel('OK','Please make sure b')
+        mes_d = messagebox.askokcancel('Re-check','Sure to start slot D')
         ##print(mes_d)
         if mes_d == True:
             cell4_slot_d_running = True
