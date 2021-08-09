@@ -69,9 +69,9 @@ def tick():
     
 
 #!----------------------------------------limit count--------------------------------------------!
-countlim_set = 3600 #Sec = 1 hr
+countlim_set = 420   #6 = 1 min                 360   == 1 hr    
 #!----------------------------------------limit count--------------------------------------------!
-#
+
 defult_color_delay = 500
 result_color_delay = 2000
 
@@ -303,7 +303,7 @@ def cell_1_main_start():
         
             if cell1_slot_a_running:
                 #print('cell1_slot_a_running:',cell1_slot_a_running)
-                cell_1_countlb_a.after(1000,count_a)
+                cell_1_countlb_a.after(10000,count_a) #! 10 Sec
                 cell1_cycle_time_a += 1
                 remain_time = cell1_cycle_time_a
                 # cell_1_countlb_a.config(text=str(cell1_cycle_time_a)) 
@@ -346,7 +346,7 @@ def cell_1_main_start():
         
             if cell1_slot_b_running:
                 #print('cell1_slot_b_running:',cell1_slot_b_running)
-                cell_1_countlb_b.after(1000,count_a)
+                cell_1_countlb_b.after(10000,count_a)#! 10 Sec
                 cell1_cycle_time_b += 1
                 remain_time = cell1_cycle_time_b
                 # cell_1_countlb_b.config(text=str(cell1_cycle_time_b)) 
@@ -389,7 +389,7 @@ def cell_1_main_start():
         
             if cell1_slot_c_running:
                 #print('cell1_slot_c_running:',cell1_slot_c_running)
-                cell_1_countlb_c.after(1000,count_a)
+                cell_1_countlb_c.after(10000,count_a)#! 10 Sec
                 cell1_cycle_time_c += 1
                 remain_time = cell1_cycle_time_c
                 # cell_1_countlb_c.config(text=str(cell1_cycle_time_c)) 
@@ -432,7 +432,7 @@ def cell_1_main_start():
         
             if cell1_slot_d_running:
                 ##print('cell1_slot_d_running:',cell1_slot_d_running)
-                cell_1_countlb_d.after(1000,count_a)
+                cell_1_countlb_d.after(10000,count_a)#! 10 Sec
                 cell1_cycle_time_d += 1
                 remain_time = cell1_cycle_time_d
                 # cell_1_countlb_d.config(text=str(cell1_cycle_time_d)) 
@@ -710,7 +710,7 @@ def cell_2_main_start():
         
             if cell2_slot_a_running:
                 ##print('cell2_slot_a_running:',cell2_slot_a_running)
-                cell_2_countlb_a.after(1000,count_a)
+                cell_2_countlb_a.after(10000,count_a)#! 10 Sec
                 cell2_cycle_time_a += 1
                 remain_time = cell2_cycle_time_a
                 # cell_2_countlb_a.config(text=str(cell2_cycle_time_a)) 
@@ -753,7 +753,7 @@ def cell_2_main_start():
         
             if cell2_slot_b_running:
                 ##print('cell2_slot_b_running:',cell2_slot_b_running)
-                cell_2_countlb_b.after(1000,count_a)
+                cell_2_countlb_b.after(10000,count_a)#! 10 Sec
                 cell2_cycle_time_b += 1
                 remain_time = cell2_cycle_time_b
                 # cell_2_countlb_b.config(text=str(cell2_cycle_time_b)) 
@@ -796,7 +796,7 @@ def cell_2_main_start():
         
             if cell2_slot_c_running:
                 ##print('cell2_slot_c_running:',cell2_slot_c_running)
-                cell_2_countlb_c.after(1000,count_a)
+                cell_2_countlb_c.after(10000,count_a)#! 10 Sec
                 cell2_cycle_time_c += 1
                 remain_time = cell2_cycle_time_c
                 # cell_2_countlb_c.config(text=str(cell2_cycle_time_c)) 
@@ -839,7 +839,7 @@ def cell_2_main_start():
         
             if cell2_slot_d_running:
                 ##print('cell2_slot_d_running:',cell2_slot_d_running)
-                cell_2_countlb_d.after(1000,count_a)
+                cell_2_countlb_d.after(10000,count_a)#! 10 Sec
                 cell2_cycle_time_d += 1
                 remain_time = cell2_cycle_time_d
                 # cell_2_countlb_d.config(text=str(cell2_cycle_time_d)) 
@@ -1146,7 +1146,7 @@ def cell_3_main_start():
         
             if cell3_slot_a_running:
                 ##print('cell3_slot_a_running:',cell3_slot_a_running)
-                cell_3_countlb_a.after(1000,count_a)
+                cell_3_countlb_a.after(10000,count_a)#! 10 Sec
                 cell3_cycle_time_a += 1
                 remain_time = cell3_cycle_time_a
                 # cell_3_countlb_a.config(text=str(cell3_cycle_time_a)) 
@@ -1189,7 +1189,7 @@ def cell_3_main_start():
         
             if cell3_slot_b_running:
                 ##print('cell3_slot_b_running:',cell3_slot_b_running)
-                cell_3_countlb_b.after(1000,count_a)
+                cell_3_countlb_b.after(10000,count_a)#! 10 Sec
                 cell3_cycle_time_b += 1
                 remain_time = cell3_cycle_time_b
                 # cell_3_countlb_b.config(text=str(cell3_cycle_time_b)) 
@@ -1232,7 +1232,7 @@ def cell_3_main_start():
         
             if cell3_slot_c_running:
                 ##print('cell3_slot_c_running:',cell3_slot_c_running)
-                cell_3_countlb_c.after(1000,count_a)
+                cell_3_countlb_c.after(10000,count_a)#! 10 Sec
                 cell3_cycle_time_c += 1
                 remain_time = cell3_cycle_time_c
                 # cell_3_countlb_c.config(text=str(cell3_cycle_time_c)) 
@@ -1275,7 +1275,7 @@ def cell_3_main_start():
         
             if cell3_slot_d_running:
                 ##print('cell3_slot_d_running:',cell3_slot_d_running)
-                cell_3_countlb_d.after(1000,count_a)
+                cell_3_countlb_d.after(10000,count_a)#! 10 Sec
                 cell3_cycle_time_d += 1
                 remain_time = cell3_cycle_time_d
                 # cell_3_countlb_d.config(text=str(cell3_cycle_time_d)) 
@@ -1555,7 +1555,7 @@ def cell_4_main_start():
         
             if cell4_slot_a_running:
                 ##print('cell4_slot_a_running:',cell4_slot_a_running)
-                cell_4_countlb_a.after(1000,count_a)
+                cell_4_countlb_a.after(10000,count_a)#! 10 Sec
                 cell4_cycle_time_a += 1
                 remain_time = cell4_cycle_time_a
                 # cell_4_countlb_a.config(text=str(cell4_cycle_time_a)) 
@@ -1598,7 +1598,7 @@ def cell_4_main_start():
         
             if cell4_slot_b_running:
                 ##print('cell4_slot_b_running:',cell4_slot_b_running)
-                cell_4_countlb_b.after(1000,count_a)
+                cell_4_countlb_b.after(10000,count_a)#! 10 Sec
                 cell4_cycle_time_b += 1
                 remain_time = cell4_cycle_time_b
                 # cell_4_countlb_b.config(text=str(cell4_cycle_time_b)) 
@@ -1641,7 +1641,7 @@ def cell_4_main_start():
         
             if cell4_slot_c_running:
                 ##print('cell4_slot_c_running:',cell4_slot_c_running)
-                cell_4_countlb_c.after(1000,count_a)
+                cell_4_countlb_c.after(10000,count_a)#! 10 Sec
                 cell4_cycle_time_c += 1
                 remain_time = cell4_cycle_time_c
                 # cell_4_countlb_c.config(text=str(cell4_cycle_time_c)) 
@@ -1684,7 +1684,7 @@ def cell_4_main_start():
         
             if cell4_slot_d_running:
                 #print('cell4_slot_d_running:',cell4_slot_d_running)
-                cell_4_countlb_d.after(1000,count_a)
+                cell_4_countlb_d.after(10000,count_a)#! 10 Sec
                 cell4_cycle_time_d += 1
                 remain_time = cell4_cycle_time_d
                 # cell_4_countlb_d.config(text=str(cell4_cycle_time_d)) 
