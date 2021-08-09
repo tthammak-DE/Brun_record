@@ -65,6 +65,7 @@ def tick():
     clock.after(1000, tick)
     #print(common_time)
     return common_time,time3
+    #---
     
 
 #!----------------------------------------limit count--------------------------------------------!
