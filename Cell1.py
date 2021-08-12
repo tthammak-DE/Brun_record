@@ -42,37 +42,33 @@ label_image.pack(side=LEFT,fill=X)
 
 
 now = datetime.datetime.now()
-print ('Start time ',now.month, now.day, now.hour, now.minute, now.second)
-
-# 2015 5 6 8 53 40
-
-
+print ('Start time ',now.hour, now.minute, now.second)
 
 common_time = ''
 clock = Label(win, font=('times', 15))
 clock.pack(fill=BOTH, expand=1)
-stoptime = ''
-
-
-
+stop_time = ''
+clock_stop = Label(win, font=('times', 15))
+clock_stop.pack(fill=BOTH, expand=1)
+  
 def tick():
     global common_time
-    global stoptime
+    
     # get the current local time from the PC
-    time2 = time.strftime('%H:%M %p')
+    time2 = time.strftime('%H:%M:%S %p')
+    
+    
     # if time string has changed, update it
-    time3 = time.strftime('%H:%M')
     if time2 != common_time:
         common_time = time2
         clock.config(text=time2)
         # calls itself every 200 milliseconds
         # to update the time display as needed
         # could use >200 ms, but display gets jerky
-        stoptime = now.hour+1,':',now.minute,':',now.second
+          
     clock.after(1000, tick)
-    #print(common_time)
-    return common_time,stoptime
-    #---
+    return common_time
+    #--
     
 
 #!----------------------------------------limit count--------------------------------------------!
@@ -82,13 +78,7 @@ countlim_set = 5 #Sec = 1 hr
 defult_color_delay = 500
 result_color_delay = 2000
 
-
 #!----------------------------- cell 1--------------------------------------------
-cell1_slot_a = False
-cell1_slot_b = False
-cell1_slot_c = False
-cell1_slot_d = False
-
 
 cell1_cycle_time_a = 0
 cell1_cycle_time_b = 0
@@ -97,13 +87,10 @@ cell1_cycle_time_d = 0
 
 remain_time = 0
 
-
-
 cell1_slot_a_running = False
 cell1_slot_b_running = False
 cell1_slot_c_running = False
 cell1_slot_d_running = False
-
 
 #--------------------------------------------------------------
 
@@ -122,8 +109,6 @@ cell_1_label=Label(cell_1,text="Baking slot C",fg='white',bg='DeepSkyBlue4',font
 cell_1_label.grid(column=0, row=7, padx=8, pady=4)
 cell_1_label=Label(cell_1,text="Baking slot D",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
 cell_1_label.grid(column=0, row=8, padx=8, pady=4)
-
-
 
 
 def cell_1_main_start():
@@ -223,10 +208,7 @@ def cell_1_main_start():
             cell1_slot_a_running = False
             cell1_cycle_time_a = 0
             start_cell1_a(cell1_slot_a_running)
-            # cell_1_butt=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold'))
-            # cell_1_butt.grid(column=10, row=5, padx=5, pady=2)
-            
-             
+       
             return cell1_cycle_time_a
 
     def cell1_b_stop(stop_butt):
@@ -303,14 +285,11 @@ def cell_1_main_start():
         #print ("status cell1_slot_a =",cell1_slot_a)
         cell_1_label=Label(cell_1,text= common_time,fg='black',bg='white',font=("arial", 10))
         cell_1_label.grid(column=3, row=5, padx=8, pady=4)
-        cell_1_stoptime_label= Label(cell_1,text=stoptime,fg='black',bg='white',font=("arial", 10))
-        cell_1_stoptime_label.grid(column=7, row=5, padx=8, pady=4)
 
-        cell1_defult_led()
+        cell1_defult_led_a()
         def count_a():
             global cell1_slot_a_running
             global cell1_cycle_time_a
-            global cell1_slot_a
             if cell1_slot_a_running:
                 #print('cell1_slot_a_running:',cell1_slot_a_running)
                 cell_1_countlb_a.after(1000,count_a)
@@ -320,16 +299,14 @@ def cell_1_main_start():
                 #print("This is remain_time A:",remain_time)
                 if cell1_cycle_time_a == 1:
                     LED_show_a()
-                    
                 elif cell1_cycle_time_a == countlim_set :
                     unit_pass()
-                    
                     print('------------------------unit_pass(Cell 1 a)-----------------------')
                 return cell1_cycle_time_a
             else :
                 cell1_cycle_time_a = 0
                 # cell_1_countlb_a.config(text=str(cell1_cycle_time_a))
-                
+    
                 return cell1_cycle_time_a 
             
         def LED_show_a():
@@ -343,8 +320,7 @@ def cell_1_main_start():
             # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3")) 
 
                       
-        def unit_pass():
-            
+        def unit_pass():  
             cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_Y.grid(column=9, row=5, padx=5, pady=2)
             cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
@@ -359,10 +335,10 @@ def cell_1_main_start():
         #print ("status cell1_slot_b =",cell1_slot_b)
         cell_1_label=Label(cell_1,text= common_time,fg='black',bg='white',font=("arial", 10))
         cell_1_label.grid(column=3, row=6, padx=8, pady=4)
+        cell1_defult_led_b()
         def count_a():
             global cell1_slot_b_running  # True /Falsez
             global cell1_cycle_time_b
-            global cell1_slot_b
             
             if cell1_slot_b_running:
                 #print('cell1_slot_b_running:',cell1_slot_b_running)
@@ -371,7 +347,7 @@ def cell_1_main_start():
                 remain_time = cell1_cycle_time_b
                 # cell_1_countlb_b.config(text=str(cell1_cycle_time_b)) 
                 #print("This is remain_time B:",remain_time)
-                if cell1_cycle_time_b <= 1:
+                if cell1_cycle_time_b == 1:
                     LED_show_a()
                 elif cell1_cycle_time_b == countlim_set :
                     unit_pass()
@@ -384,26 +360,34 @@ def cell_1_main_start():
                 return cell1_cycle_time_b
                             
         def LED_show_a():
+            cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt.grid(column=9, row=6, padx=5, pady=2)
             cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=6, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=6, padx=5, pady=2)
             # cell_1.after(result_color_delay, lambda: cell_1_butt.configure(background="yellow"))
-            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3"))
-        def unit_pass():
+            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3")) 
+       
+        def unit_pass():  
+            cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt_Y.grid(column=9, row=6, padx=5, pady=2)
             cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_Y.grid(column=10, row=6, padx=5, pady=2)
             cell_1_butt_G=Button(cell_1, text=" Done ", width =12,bg="firebrick1",fg='white',font = ('tahoma 13 bold')) 
             cell_1_butt_G.grid(column=11, row=6, padx=5, pady=2)
             cell_1.after(defult_color_delay, lambda: cell_1_butt_G.configure(background="firebrick4"))
             cell_1.after(result_color_delay, lambda: cell_1_butt_G.configure(background="firebrick1"))
-                
+                  
         count_a()
     
     def start_cell1_c(cell1_slot_c_running):
         #print ("status cell1_slot_c =",cell1_slot_c_running)
         cell_1_label=Label(cell_1,text= common_time,fg='black',bg='white',font=("arial", 10))   # start time label
         cell_1_label.grid(column=3, row=7, padx=8, pady=4)
+        
+        cell1_defult_led_c()
+    
         def count_a():
             global cell1_slot_c_running  # True /False
             global cell1_cycle_time_c
@@ -414,9 +398,8 @@ def cell_1_main_start():
                 cell_1_countlb_c.after(1000,count_a)
                 cell1_cycle_time_c += 1
                 remain_time = cell1_cycle_time_c
-                # cell_1_countlb_c.config(text=str(cell1_cycle_time_c)) 
-                ####print("This is remain_time c:",remain_time)
-                if cell1_cycle_time_c <= 1:
+             
+                if cell1_cycle_time_c == 1:
                     LED_show_a()
                 elif cell1_cycle_time_c == countlim_set :
                     unit_pass()
@@ -428,32 +411,37 @@ def cell_1_main_start():
                 return cell1_cycle_time_c
                             
         def LED_show_a():
+            cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt.grid(column=9, row=7, padx=5, pady=2)
             cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=7, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=7, padx=5, pady=2)
             # cell_1.after(result_color_delay, lambda: cell_1_butt.configure(background="yellow"))
-            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3"))
-        def unit_pass():
-            
+            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3")) 
+       
+        def unit_pass():  
+            cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt_Y.grid(column=9, row=7, padx=5, pady=2)
             cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_Y.grid(column=10, row=7, padx=5, pady=2)
             cell_1_butt_G=Button(cell_1, text=" Done ", width =12,bg="firebrick1",fg='white',font = ('tahoma 13 bold')) 
             cell_1_butt_G.grid(column=11, row=7, padx=5, pady=2)
-            # cell_1.after(defult_color_delay, lambda: cell_1_butt_G.configure(background="firebrick4"))
-            # cell_1.after(result_color_delay, lambda: cell_1_butt_G.configure(background="firebrick1"))
-                    
+            cell_1.after(defult_color_delay, lambda: cell_1_butt_G.configure(background="firebrick4"))
+            cell_1.after(result_color_delay, lambda: cell_1_butt_G.configure(background="firebrick1"))
+            
+
         count_a()
     
     def start_cell1_d(cell1_slot_d_running):
         ##print ("status cell1_slot_c =",cell1_slot_d_running)
         cell_1_label=Label(cell_1,text= common_time,fg='black',bg='white',font=("arial", 10))   # start time label
         cell_1_label.grid(column=3, row=8, padx=8, pady=4)
+        cell1_defult_led_d()
         def count_a():
             global cell1_slot_d_running  # True /False
             global cell1_cycle_time_d
-            global cell1_slot_d
-        
+
             if cell1_slot_d_running:
                 ##print('cell1_slot_d_running:',cell1_slot_d_running)
                 cell_1_countlb_d.after(1000,count_a)
@@ -461,7 +449,7 @@ def cell_1_main_start():
                 remain_time = cell1_cycle_time_d
                 # cell_1_countlb_d.config(text=str(cell1_cycle_time_d)) 
                 #####print("This is remain_time c:",remain_time)
-                if cell1_cycle_time_d <= 1:
+                if cell1_cycle_time_d == 1:
                     LED_show_a()
                 elif cell1_cycle_time_d == countlim_set :
                     unit_pass()
@@ -474,22 +462,69 @@ def cell_1_main_start():
                 return cell1_cycle_time_d
                             
         def LED_show_a():
+            cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt.grid(column=9, row=8, padx=5, pady=2)
             cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=8, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=8, padx=5, pady=2)
             # cell_1.after(result_color_delay, lambda: cell_1_butt.configure(background="yellow"))
-            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3"))
-        def unit_pass():
+            # cell_1.after(defult_color_delay, lambda: cell_1_butt.configure(background="yellow3")) 
+       
+        def unit_pass():  
+            cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
+            cell_1_butt_Y.grid(column=9, row=8, padx=5, pady=2)
             cell_1_butt_Y=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_Y.grid(column=10, row=8, padx=5, pady=2)
             cell_1_butt_G=Button(cell_1, text=" Done ", width =12,bg="firebrick1",fg='white',font = ('tahoma 13 bold')) 
             cell_1_butt_G.grid(column=11, row=8, padx=5, pady=2)
-            # cell_1.after(defult_color_delay, lambda: cell_1_butt_G.configure(background="firebrick4"))
-            # cell_1.after(result_color_delay, lambda: cell_1_butt_G.configure(background="firebrick1"))
-            
-                
+            cell_1.after(defult_color_delay, lambda: cell_1_butt_G.configure(background="firebrick4"))
+            cell_1.after(result_color_delay, lambda: cell_1_butt_G.configure(background="firebrick1"))
         count_a()
+
+
+    def cell1_defult_led_a():
+                cell_1_butt_defult_led=Button(cell_1, text="Free", width =12,fg='white',bg='green',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led.grid(column=9, row=5, padx=5, pady=2)
+                cell_1_butt_defult_led2=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led2.grid(column=10, row=5, padx=5, pady=2)
+                cell_1_butt_defult_led3=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led3.grid(column=11, row=5, padx=5, pady=2)
+                cell_1.after(defult_color_delay, lambda: cell_1_butt_defult_led.configure(background="lime green"))
+                cell_1.after(result_color_delay, lambda: cell_1_butt_defult_led.configure(background="green"))        
+
+    def cell1_defult_led_b():
+
+                cell_1_butt_defult_led=Button(cell_1, text="Free", width =12,fg='white',bg='green',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led.grid(column=9, row=6, padx=5, pady=2)
+                cell_1_butt_defult_led2=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led2.grid(column=10, row=6, padx=5, pady=2)
+                cell_1_butt_defult_led3=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led3.grid(column=11, row=6, padx=5, pady=2)
+                cell_1.after(defult_color_delay, lambda: cell_1_butt_defult_led.configure(background="lime green"))
+                cell_1.after(result_color_delay, lambda: cell_1_butt_defult_led.configure(background="green"))   
+
+    def cell1_defult_led_c():
+
+                cell_1_butt_defult_led=Button(cell_1, text="Free", width =12,fg='white',bg='green',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led.grid(column=9, row=7, padx=5, pady=2)
+                cell_1_butt_defult_led2=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led2.grid(column=10, row=7, padx=5, pady=2)
+                cell_1_butt_defult_led3=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led3.grid(column=11, row=7, padx=5, pady=2)
+                cell_1.after(defult_color_delay, lambda: cell_1_butt_defult_led.configure(background="lime green"))
+                cell_1.after(result_color_delay, lambda: cell_1_butt_defult_led.configure(background="green"))     
+
+    def cell1_defult_led_d():
+
+                cell_1_butt_defult_led=Button(cell_1, text="Free", width =12,fg='white',bg='green',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led.grid(column=9, row=8, padx=5, pady=2)
+                cell_1_butt_defult_led2=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led2.grid(column=10, row=8, padx=5, pady=2)
+                cell_1_butt_defult_led3=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
+                cell_1_butt_defult_led3.grid(column=11, row=8, padx=5, pady=2)
+                cell_1.after(defult_color_delay, lambda: cell_1_butt_defult_led.configure(background="lime green"))
+                cell_1.after(result_color_delay, lambda: cell_1_butt_defult_led.configure(background="green"))   
     
 
 cell_1_label=Label(cell_1,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
@@ -500,15 +535,6 @@ cell_1_label=Label(cell_1,text="Start time :",fg='white',bg='DeepSkyBlue4',font=
 cell_1_label.grid(column=2, row=7, padx=8, pady=4)
 cell_1_label=Label(cell_1,text="Start time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
 cell_1_label.grid(column=2, row=8, padx=8, pady=4)
-
-cell_1_label_stop=Label(cell_1,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-cell_1_label_stop.grid(column=6, row=5, padx=8, pady=4)
-cell_1_label_stop=Label(cell_1,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-cell_1_label_stop.grid(column=7, row=6, padx=8, pady=4)
-cell_1_label_stop=Label(cell_1,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-cell_1_label_stop.grid(column=7, row=7, padx=8, pady=4)
-cell_1_label_stop=Label(cell_1,text="Stop time :",fg='white',bg='DeepSkyBlue4',font=("arial", 10))
-cell_1_label_stop.grid(column=7, row=8, padx=8, pady=4)
 
 
 cell_1_countlb_a=Label(cell_1,text=" ",fg='black',font=("arial", 10))
@@ -521,18 +547,12 @@ cell_1_countlb_d=Label(cell_1,text="  ",fg='black',font=("arial", 10))
 cell_1_countlb_d.grid(column=20, row=8, padx=8, pady=4)
 
 
-
 #!---------------------------------------------------------End cell 1------------------------------------!
 
-def cell1_defult_led():
-            cell_1_butt_defult_led=Button(cell_1, text="Free", width =12,fg='white',bg='green',font = ('tahoma 13 bold')) 
-            cell_1_butt_defult_led.grid(column=9, row=5, padx=5, pady=2)
-            cell_1_butt_defult_led2=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
-            cell_1_butt_defult_led2.grid(column=10, row=5, padx=5, pady=2)
-            cell_1_butt_defult_led3=Button(cell_1, text=" ", width =12,fg='white',font = ('tahoma 13 bold')) 
-            cell_1_butt_defult_led3.grid(column=11, row=5, padx=5, pady=2)
-            cell_1.after(defult_color_delay, lambda: cell_1_butt_defult_led.configure(background="lime green"))
-            cell_1.after(result_color_delay, lambda: cell_1_butt_defult_led.configure(background="green"))                 
+
+
+
+
 
 tick()
 cell_1_main_start()
