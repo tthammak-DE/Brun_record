@@ -1,3 +1,9 @@
+"""
+Version record change
+
+V1.01 Change   fg='white',bg='yellow' to fg='black',bg='yellow'
+
+"""
 
 #======================
 # imports
@@ -313,7 +319,7 @@ def cell_1_main_start():
         def LED_show_a():
             cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=9, row=5, padx=5, pady=2)
-            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=5, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=5, padx=5, pady=2)
@@ -363,7 +369,7 @@ def cell_1_main_start():
         def LED_show_a():
             cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=9, row=6, padx=5, pady=2)
-            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=6, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=6, padx=5, pady=2)
@@ -414,7 +420,7 @@ def cell_1_main_start():
         def LED_show_a():
             cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=9, row=7, padx=5, pady=2)
-            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=7, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=7, padx=5, pady=2)
@@ -465,7 +471,7 @@ def cell_1_main_start():
         def LED_show_a():
             cell_1_butt=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=9, row=8, padx=5, pady=2)
-            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_1_butt=Button(cell_1, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_1_butt.grid(column=10, row=8, padx=5, pady=2)
             cell_1_butt_D=Button(cell_1, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_1_butt_D.grid(column=11, row=8, padx=5, pady=2)
@@ -792,7 +798,7 @@ def cell_2_main_start():
         def LED_show_a():
             cell_2_butt=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=9, row=5, padx=5, pady=2)
-            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=10, row=5, padx=5, pady=2)
             cell_2_butt_D=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt_D.grid(column=11, row=5, padx=5, pady=2)
@@ -842,7 +848,7 @@ def cell_2_main_start():
         def LED_show_a():
             cell_2_butt=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=9, row=6, padx=5, pady=2)
-            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=10, row=6, padx=5, pady=2)
             cell_2_butt_D=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt_D.grid(column=11, row=6, padx=5, pady=2)
@@ -893,7 +899,7 @@ def cell_2_main_start():
         def LED_show_a():
             cell_2_butt=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=9, row=7, padx=5, pady=2)
-            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=10, row=7, padx=5, pady=2)
             cell_2_butt_D=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt_D.grid(column=11, row=7, padx=5, pady=2)
@@ -944,7 +950,7 @@ def cell_2_main_start():
         def LED_show_a():
             cell_2_butt=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=9, row=8, padx=5, pady=2)
-            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_2_butt=Button(cell_2, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_2_butt.grid(column=10, row=8, padx=5, pady=2)
             cell_2_butt_D=Button(cell_2, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_2_butt_D.grid(column=11, row=8, padx=5, pady=2)
@@ -1272,7 +1278,7 @@ def cell_3_main_start():
         def LED_show_a():
             cell_3_butt=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=9, row=5, padx=5, pady=2)
-            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=10, row=5, padx=5, pady=2)
             cell_3_butt_D=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt_D.grid(column=11, row=5, padx=5, pady=2)
@@ -1322,7 +1328,7 @@ def cell_3_main_start():
         def LED_show_a():
             cell_3_butt=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=9, row=6, padx=5, pady=2)
-            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=10, row=6, padx=5, pady=2)
             cell_3_butt_D=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt_D.grid(column=11, row=6, padx=5, pady=2)
@@ -1373,7 +1379,7 @@ def cell_3_main_start():
         def LED_show_a():
             cell_3_butt=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=9, row=7, padx=5, pady=2)
-            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=10, row=7, padx=5, pady=2)
             cell_3_butt_D=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt_D.grid(column=11, row=7, padx=5, pady=2)
@@ -1424,7 +1430,7 @@ def cell_3_main_start():
         def LED_show_a():
             cell_3_butt=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=9, row=8, padx=5, pady=2)
-            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_3_butt=Button(cell_3, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_3_butt.grid(column=10, row=8, padx=5, pady=2)
             cell_3_butt_D=Button(cell_3, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_3_butt_D.grid(column=11, row=8, padx=5, pady=2)
@@ -1751,7 +1757,7 @@ def cell_4_main_start():
         def LED_show_a():
             cell_4_butt=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=9, row=5, padx=5, pady=2)
-            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=10, row=5, padx=5, pady=2)
             cell_4_butt_D=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt_D.grid(column=11, row=5, padx=5, pady=2)
@@ -1801,7 +1807,7 @@ def cell_4_main_start():
         def LED_show_a():
             cell_4_butt=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=9, row=6, padx=5, pady=2)
-            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=10, row=6, padx=5, pady=2)
             cell_4_butt_D=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt_D.grid(column=11, row=6, padx=5, pady=2)
@@ -1852,7 +1858,7 @@ def cell_4_main_start():
         def LED_show_a():
             cell_4_butt=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=9, row=7, padx=5, pady=2)
-            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=10, row=7, padx=5, pady=2)
             cell_4_butt_D=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt_D.grid(column=11, row=7, padx=5, pady=2)
@@ -1903,7 +1909,7 @@ def cell_4_main_start():
         def LED_show_a():
             cell_4_butt=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=9, row=8, padx=5, pady=2)
-            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='white',bg='yellow',font = ('tahoma 13 bold')) 
+            cell_4_butt=Button(cell_4, text="Baking", width =12,fg='black',bg='yellow',font = ('tahoma 13 bold')) 
             cell_4_butt.grid(column=10, row=8, padx=5, pady=2)
             cell_4_butt_D=Button(cell_4, text=" ", width =12,font = ('tahoma 13 bold')) 
             cell_4_butt_D.grid(column=11, row=8, padx=5, pady=2)
