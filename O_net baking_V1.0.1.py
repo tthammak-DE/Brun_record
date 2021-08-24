@@ -1,7 +1,7 @@
 """
 Version record change
 
-V1.01 Change   fg='white',bg='yellow' to fg='black',bg='yellow'
+V1.01 Change  20/8/2021    change color box   fg='white',bg='yellow' to fg='black',bg='yellow'
 
 """
 
